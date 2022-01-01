@@ -8,13 +8,16 @@ Route::get('test', function (){
   return view('layouts.app');
 });
 
-//Redirect Routes
-Route::redirect('/', 'login');
+
 
 //Auth Routes
 Auth::routes();
 
 //Custom Routes//
+// FrontendController Routes
+Route::get('/', 'FrontendController@index')->name('index');
+Route::get('add.property', 'FrontendController@addproperty')->name('add.property');
+
 // DashboardController Routes
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
