@@ -6,10 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-
                 <h2 class="ipt-title">Welcome!</h2>
                 <span class="ipn-subtitle">Welcome To Your Account</span>
-
             </div>
         </div>
     </div>
@@ -43,9 +41,15 @@
                         <div class="dashboard-navbar">
 
                             <div class="d-user-avater">
-                                <img src="{{ asset('frontend_assets') }}/img/user-3.jpg" class="img-fluid avater" alt="">
-                                <h4>James Tahsan</h4>
-                                <span>Canada USA</span>
+                                <img src="{{ asset('uploads/avatars') }}/{{ auth()->user()->avatar }}" class="img-fluid avater" alt="">
+                                <h4>{{ auth()->user()->name }}</h4>
+                                <span>
+                                    @if (auth()->user()->role == 2)
+                                        I want to rent my hostel
+                                    @else
+                                        I am looking for renting hostel
+                                    @endif
+                                </span>
                             </div>
 
                             <div class="d-navigation">
@@ -54,7 +58,11 @@
                                     <li><a href="my-property.html"><i class="ti-layers"></i>My Properties</a></li>
                                     <li class="active"><a href="submit-property-dashboard.html"><i class="ti-pencil-alt"></i>Submit New Property</a></li>
                                     <li><a href="change-password.html"><i class="ti-unlock"></i>Change Password</a></li>
-                                    <li><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();"><i class="ti-power-off"></i>Log Out</a></li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </ul>
                             </div>
 

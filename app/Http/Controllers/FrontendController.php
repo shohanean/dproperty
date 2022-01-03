@@ -14,4 +14,8 @@ class FrontendController extends Controller
     {
         return view('frontend.addproperty');
     }
+    public function propertydetails()
+    {
+        return view('frontend.propertydetails');
+    }
 }

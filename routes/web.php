@@ -16,7 +16,8 @@ Auth::routes();
 //Custom Routes//
 // FrontendController Routes
 Route::get('/', 'FrontendController@index')->name('index');
-Route::get('add.property', 'FrontendController@addproperty')->name('add.property');
+Route::get('add/property', 'FrontendController@addproperty')->name('add.property');
+Route::get('property/details/{id}', 'FrontendController@propertydetails')->name('property.details');
 
 // DashboardController Routes
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');

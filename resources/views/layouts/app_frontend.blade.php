@@ -56,10 +56,16 @@
 								<li>
 									<a href="{{ route('add.property') }}" class="text-success"><img src="{{ asset('frontend_assets') }}/img/submit.svg" width="20" alt="" class="mr-2" />Submit Property</a>
 								</li>
+                                @guest
 								<li class="add-listing">
 									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="{{ asset('frontend_assets') }}/img/user-light.svg" width="12" alt="" class="mr-2" />Sign In</a>
 								</li>
-								<li class="add-listing"><a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</a></li>
+                                @endguest
+                                @guest
+								    <li class="add-listing"><a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</a></li>
+                                @else
+								    <li class="add-listing"><a href="{{ url('add/property') }}">Go To Dashboard</a></li>
+                                @endguest
 							</ul>
 						</div>
 					</nav>
@@ -161,20 +167,20 @@
 						<div class="modal-body">
 							<h4 class="modal-header-title">Log In</h4>
 							<div class="login-form">
-								<form>
-
+								<form action="{{ route('login') }}" method="POST">
+                                    @csrf
 									<div class="form-group">
-										<label>User Name</label>
+										<label>Email</label>
 										<div class="input-with-icon">
-											<input type="text" class="form-control" placeholder="Username">
-											<i class="ti-user"></i>
+											<input type="text" class="form-control" placeholder="Email" name="email">
+											<i class="ti-email"></i>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label>Password</label>
 										<div class="input-with-icon">
-											<input type="password" class="form-control" placeholder="*******">
+											<input type="password" class="form-control" placeholder="*******" name="password">
 											<i class="ti-unlock"></i>
 										</div>
 									</div>
@@ -192,9 +198,6 @@
 									<li><a href="#" class="btn connect-google"><i class="ti-google"></i>Google+</a></li>
 								</ul>
 							</div>
-							<div class="text-center">
-								<p class="mt-5"><a href="#" class="link">Forgot password?</a></p>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -209,14 +212,14 @@
 						<div class="modal-body">
 							<h4 class="modal-header-title">Sign Up</h4>
 							<div class="login-form">
-								<form>
-
+								<form action="{{ route('register') }}" method="POST">
+                                    @csrf
 									<div class="row">
 
 										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
 												<div class="input-with-icon">
-													<input type="text" class="form-control" placeholder="Full Name">
+													<input type="text" class="form-control" placeholder="Full Name" name="name">
 													<i class="ti-user"></i>
 												</div>
 											</div>
@@ -225,7 +228,7 @@
 										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
 												<div class="input-with-icon">
-													<input type="email" class="form-control" placeholder="Email">
+													<input type="email" class="form-control" placeholder="Email" name="email">
 													<i class="ti-email"></i>
 												</div>
 											</div>
@@ -234,16 +237,15 @@
 										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
 												<div class="input-with-icon">
-													<input type="text" class="form-control" placeholder="Username">
-													<i class="ti-user"></i>
+													<input type="password" class="form-control" placeholder="*******" name="password">
+													<i class="ti-unlock"></i>
 												</div>
 											</div>
 										</div>
-
 										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
 												<div class="input-with-icon">
-													<input type="password" class="form-control" placeholder="*******">
+													<input type="password" class="form-control" placeholder="*******" name="password_confirmation">
 													<i class="ti-unlock"></i>
 												</div>
 											</div>
@@ -252,7 +254,7 @@
 										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
 												<div class="input-with-icon">
-													<input type="password" class="form-control" placeholder="123 546 5847">
+													<input type="text" class="form-control" placeholder="017xxxxxxxx" name="phone_number">
 													<i class="lni-phone-handset"></i>
 												</div>
 											</div>
@@ -261,9 +263,10 @@
 										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
 												<div class="input-with-icon">
-													<select class="form-control">
-														<option>As a Manager</option>
-														<option>As a Customer</option>
+													<select class="form-control" name="role">
+														<option value="">-Choose One-</option>
+														<option value="2">I want to rent my hostel</option>
+														<option value="3">I am looking for renting hostel</option>
 													</select>
 													<i class="ti-briefcase"></i>
 												</div>

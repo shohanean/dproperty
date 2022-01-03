@@ -15,10 +15,15 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        return view('dashboard')->with([
-          'users' => User::count(),
-          'roles' => Role::count(),
-          'permissions' => Permission::count()
-        ]);
+        if (auth()->user()->role != 1) {
+            return redirect('add/property');
+        } else {
+            return view('dashboard')->with([
+              'users' => User::count(),
+              'roles' => Role::count(),
+              'permissions' => Permission::count()
+            ]);
+        }
+
     }
 }

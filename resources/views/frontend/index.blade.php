@@ -210,7 +210,7 @@
                                 <div class="foot-location"><img src="{{ asset('frontend_assets') }}/img/pin.svg" width="18" alt="" />10/A Dhanmondi, Dhaka</div>
                             </div>
                             <div class="footer-flex">
-                                <a href="#" class="prt-view">View</a>
+                                <a href="{{ route('property.details', $i) }}" class="prt-view">View</a>
                             </div>
                         </div>
 
@@ -244,6 +244,7 @@
         </div>
 
         <div class="row">
+            @for ($i = 1; $i <= 6; $i++)
             <div class="col-lg-4 col-md-4">
                 <div class="location-property-wrap">
                     <div class="location-property-thumb">
@@ -260,6 +261,7 @@
                     </div>
                 </div>
             </div>
+            @endfor
         </div>
 
         <div class="row">
