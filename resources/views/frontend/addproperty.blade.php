@@ -79,236 +79,201 @@
                         <div class="col-lg-12 col-md-12">
 
                             <div class="submit-page">
+                                <form action="{{ route('add.property.post') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <!-- Basic Information -->
+                                    <div class="form-submit">
+                                        <h3>Basic Information</h3>
+                                        <div class="submit-section">
+                                            <div class="row">
 
-                                <!-- Basic Information -->
-                                <div class="form-submit">
-                                    <h3>Basic Information</h3>
-                                    <div class="submit-section">
-                                        <div class="row">
-
-                                            <div class="form-group col-md-6">
-                                                <label>Hostel Title<span class="tip-topdata" data-tip="Hostel Title"><i class="ti-help"></i></span></label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Status</label>
-                                                <select id="status" class="form-control">
-                                                    <option value="">&nbsp;</option>
-                                                    <option value="1">For Rent</option>
-                                                    <option value="2">For Sale</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Hostel Type</label>
-                                                <select id="ptypes" class="form-control">
-                                                    <option value="">&nbsp;</option>
-                                                    <option value="1">Student</option>
-                                                    <option value="2">Bachelor</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Area</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Rent Amount</label>
-                                                <input type="text" class="form-control" placeholder="BDT">
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Meal Cost</label>
-                                                <input type="text" class="form-control" placeholder="BDT">
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Bed type</label>
-                                                <select id="bedrooms" class="form-control">
-                                                    <option value="">&nbsp;</option>
-                                                    <option value="1">Single Bed</option>
-                                                    <option value="2">Double Bed</option>
-                                                    <option value="3">Triple Bed</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Bathrooms</label>
-                                                <select id="bathrooms" class="form-control">
-                                                    <option value="">&nbsp;</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Gallery -->
-                                <div class="form-submit">
-                                    <h3>Gallery</h3>
-                                    <div class="submit-section">
-                                        <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <label>Upload Hostel Room Images</label>
-                                                <input type="file" class="form-control">
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label>Upload Meal Chart (image,doc,pdf)</label>
-                                                <input type="file" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Location -->
-                                <div class="form-submit">
-                                    <h3>Location</h3>
-                                    <div class="submit-section">
-                                        <div class="row">
-
-                                            <div class="form-group col-md-6">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>State</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <label>Zip Code</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-12">
-                                                <label>Google Map Location</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Detailed Information -->
-                                <div class="form-submit">
-                                    <h3>Detailed Information</h3>
-                                    <div class="submit-section">
-                                        <div class="row">
-
-                                            <div class="form-group col-md-12">
-                                                <label>Description</label>
-                                                <textarea class="form-control h-120"></textarea>
-                                            </div>
-
-                                            <div class="form-group col-md-12">
-                                                <label>Other Features (optional)</label>
-                                                <div class="o-features">
-                                                    <ul class="no-ul-list third-row">
-                                                        <li>
-                                                            <input id="a-1" class="checkbox-custom" name="a-1" type="checkbox">
-                                                            <label for="a-1" class="checkbox-custom-label">Air Condition</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-2" class="checkbox-custom" name="a-2" type="checkbox">
-                                                            <label for="a-2" class="checkbox-custom-label">Bedding</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-3" class="checkbox-custom" name="a-3" type="checkbox">
-                                                            <label for="a-3" class="checkbox-custom-label">Heating</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-4" class="checkbox-custom" name="a-4" type="checkbox">
-                                                            <label for="a-4" class="checkbox-custom-label">Internet</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-5" class="checkbox-custom" name="a-5" type="checkbox">
-                                                            <label for="a-5" class="checkbox-custom-label">Microwave</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-6" class="checkbox-custom" name="a-6" type="checkbox">
-                                                            <label for="a-6" class="checkbox-custom-label">Smoking Allow</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-7" class="checkbox-custom" name="a-7" type="checkbox">
-                                                            <label for="a-7" class="checkbox-custom-label">Terrace</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-8" class="checkbox-custom" name="a-8" type="checkbox">
-                                                            <label for="a-8" class="checkbox-custom-label">Balcony</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-9" class="checkbox-custom" name="a-9" type="checkbox">
-                                                            <label for="a-9" class="checkbox-custom-label">Icon</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-10" class="checkbox-custom" name="a-10" type="checkbox">
-                                                            <label for="a-10" class="checkbox-custom-label">Wi-Fi</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-11" class="checkbox-custom" name="a-11" type="checkbox">
-                                                            <label for="a-11" class="checkbox-custom-label">Beach</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="a-12" class="checkbox-custom" name="a-12" type="checkbox">
-                                                            <label for="a-12" class="checkbox-custom-label">Parking</label>
-                                                        </li>
-                                                    </ul>
+                                                <div class="form-group col-md-6">
+                                                    <label>Title<span class="tip-topdata" data-tip="Hostel Title"><i class="ti-help"></i></span></label>
+                                                    <input type="text" class="form-control" name="title">
                                                 </div>
-                                            </div>
 
+                                                <div class="form-group col-md-6">
+                                                    <label>Hostel Type</label>
+                                                    <select id="ptypes" class="form-control" name="type">
+                                                        <option value="">-Choose One-</option>
+                                                        <option value="1">For Boys</option>
+                                                        <option value="2">For Girls</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Rent Amount</label>
+                                                    <input type="text" class="form-control" placeholder="BDT" name="rent_amount">
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Meal Cost</label>
+                                                    <input type="text" class="form-control" placeholder="BDT" name="meal_cost">
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Bed type</label>
+                                                    <input type="text" class="form-control" placeholder="Single Bed, Double Bed" name="bed_type">
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Bathrooms</label>
+                                                    <input type="text" class="form-control" placeholder="1,2" name="bathroom">
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Contact Information -->
-                                <div class="form-submit">
-                                    <h3>Contact Information</h3>
-                                    <div class="submit-section">
-                                        <div class="row">
+                                    <!-- Gallery -->
+                                    <div class="form-submit">
+                                        <h3>Gallery</h3>
+                                        <div class="submit-section">
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label>Upload Hostel Room Images</label>
+                                                    <input type="file" class="form-control" name="property_photo">
+                                                </div>
 
-                                            <div class="form-group col-md-4">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control">
+                                                {{-- <div class="form-group col-md-12">
+                                                    <label>Upload Meal Chart (image,doc,pdf)</label>
+                                                    <input type="file" class="form-control">
+                                                </div> --}}
                                             </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label>Email</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                            <div class="form-group col-md-4">
-                                                <label>Phone</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-
                                         </div>
                                     </div>
-                                </div>
+                                    <!-- Location -->
+                                    <div class="form-submit">
+                                        <h3>Location</h3>
+                                        <div class="submit-section">
+                                            <div class="row">
 
-                                <div class="form-group col-lg-12 col-md-12">
-                                    <label>Terms and Conditions Agreement *</label>
-                                    <ul class="no-ul-list">
-                                        <li>
-                                            <input id="aj-1" class="checkbox-custom" name="aj-1" type="checkbox">
-                                            <label for="aj-1" class="checkbox-custom-label">I consent to having this website store my submitted information so they can respond to my inquiry.</label>
-                                        </li>
-                                    </ul>
-                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Address</label>
+                                                    <input type="text" class="form-control" name="address">
+                                                </div>
 
-                                <div class="form-group col-lg-12 col-md-12">
-                                    <button class="btn btn-theme-light-2 rounded" type="submit">Submit & Preview</button>
-                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>City</label>
+                                                    <select class="form-control" name="location_id">
+                                                        <option value="">-Choose One-</option>
+                                                        @foreach ($locations as $location)
+                                                            <option value="{{ $location->id }}">{{ $location->name }}, {{ App\District::find($location->district_id)->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
 
+                                                <div class="form-group col-md-12">
+                                                    <label>Google Map Location</label>
+                                                    <input type="text" class="form-control" name="google_map">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Detailed Information -->
+                                    <div class="form-submit">
+                                        <h3>Detailed Information</h3>
+                                        <div class="submit-section">
+                                            <div class="row">
+
+                                                <div class="form-group col-md-12">
+                                                    <label>Description</label>
+                                                    <textarea name="description" class="form-control h-120"></textarea>
+                                                </div>
+
+                                                <div class="form-group col-md-12">
+                                                    <label>Other Features (optional)</label>
+                                                    <div class="o-features">
+                                                        <ul class="no-ul-list third-row">
+                                                            <li>
+                                                                <input id="a-1" class="checkbox-custom" name="features[Air Condition]" type="checkbox">
+                                                                <label for="a-1" class="checkbox-custom-label">Air Condition</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-2" class="checkbox-custom" name="features[Bedding]" type="checkbox">
+                                                                <label for="a-2" class="checkbox-custom-label">Bedding</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-3" class="checkbox-custom" name="features[Heating]" type="checkbox">
+                                                                <label for="a-3" class="checkbox-custom-label">Heating</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-4" class="checkbox-custom" name="features[Internet]" type="checkbox">
+                                                                <label for="a-4" class="checkbox-custom-label">Internet</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-5" class="checkbox-custom" name="features[Microwave]" type="checkbox">
+                                                                <label for="a-5" class="checkbox-custom-label">Microwave</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-6" class="checkbox-custom" name="features[Smoking Allow]" type="checkbox">
+                                                                <label for="a-6" class="checkbox-custom-label">Smoking Allow</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-7" class="checkbox-custom" name="features[Terrace]" type="checkbox">
+                                                                <label for="a-7" class="checkbox-custom-label">Terrace</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-8" class="checkbox-custom" name="features[Balcony]" type="checkbox">
+                                                                <label for="a-8" class="checkbox-custom-label">Balcony</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-9" class="checkbox-custom" name="features[Guest Room]" type="checkbox">
+                                                                <label for="a-9" class="checkbox-custom-label">Guest Room</label>
+                                                            </li>
+                                                            <li>
+                                                                <input id="a-10" class="checkbox-custom" name="features[WiFi]" type="checkbox">
+                                                                <label for="a-10" class="checkbox-custom-label">WiFi</label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Contact Information -->
+                                    <div class="form-submit">
+                                        <h3>Contact Information</h3>
+                                        <div class="submit-section">
+                                            <div class="row">
+
+                                                <div class="form-group col-md-4">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" value="{{ auth()->user()->name }}" name="c_name">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" value="{{ auth()->user()->email }}" name="c_email">
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control" value="{{ auth()->user()->phone_number }}" name="c_phone_number">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-lg-12 col-md-12">
+                                        <label>Terms and Conditions Agreement *</label>
+                                        <ul class="no-ul-list">
+                                            <li>
+                                                <input id="aj-1" class="checkbox-custom" name="aj-1" type="checkbox" checked>
+                                                <label for="aj-1" class="checkbox-custom-label">I consent to having this website store my submitted information so they can respond to my inquiry.</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="form-group col-lg-12 col-md-12">
+                                        <button class="btn btn-theme-light-2 rounded" type="submit">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 

@@ -4,12 +4,10 @@
 <!-- ============================ Hero Banner  Start================================== -->
 <div class="featured_slick_gallery gray">
     <div class="featured_slick_gallery-slide">
-        <div class="featured_slick_padd"><a href="{{ asset('frontend_assets') }}/img/p-1.jpg" class="mfp-gallery"><img src="{{ asset('frontend_assets') }}/img/p-1.jpg" class="img-fluid mx-auto" alt="" /></a></div>
-        <div class="featured_slick_padd"><a href="{{ asset('frontend_assets') }}/img/p-2.jpg" class="mfp-gallery"><img src="{{ asset('frontend_assets') }}/img/p-2.jpg" class="img-fluid mx-auto" alt="" /></a></div>
-        <div class="featured_slick_padd"><a href="{{ asset('frontend_assets') }}/img/p-3.jpg" class="mfp-gallery"><img src="{{ asset('frontend_assets') }}/img/p-3.jpg" class="img-fluid mx-auto" alt="" /></a></div>
-        <div class="featured_slick_padd"><a href="{{ asset('frontend_assets') }}/img/p-4.jpg" class="mfp-gallery"><img src="{{ asset('frontend_assets') }}/img/p-4.jpg" class="img-fluid mx-auto" alt="" /></a></div>
+        @for ($i = 1; $i <= 4; $i++)
+            <div class="featured_slick_padd"><a href="{{ asset('uploads/property_photos') }}/{{ $property->property_photo }}" class="mfp-gallery"><img src="{{ asset('uploads/property_photos') }}/{{ $property->property_photo }}" class="img-fluid mx-auto" alt="" /></a></div>
+        @endfor
     </div>
-    <a href="JavaScript:Void(0);" class="btn-view-pic">View photos</a>
 </div>
 <!-- ============================ Hero Banner End ================================== -->
 
@@ -23,9 +21,15 @@
 
                 <div class="property_block_wrap style-2 p-4">
                     <div class="prt-detail-title-desc">
-                        <span class="prt-types sale">For Boys</span>
-                        <h3>Dhanmondi Student Hostel, Dhaka</h3>
-                        <span><i class="lni-map-marker"></i> 5/A Dhanmondi. Dhaka, Bangladesh</span>
+                        <span class="prt-types sale">
+                            @if ($property->type == 1)
+                                For Boys
+                            @else
+                                For Girls
+                            @endif
+                        </span>
+                        <h3>{{ $property->title }}</h3>
+                        <span><i class="lni-map-marker"></i> {{ $property->address }}</span>
                     </div>
                 </div>
 
@@ -53,15 +57,15 @@
                     <div>
                         <div class="block-body">
                             <ul class="deatil_features d-block">
-                                <li><h5>Single Bed Room: <span class="prt-price-fix"> BDT 8500</span></h5></li>
-                                <li><h5>Double Bed Room: <span class="prt-price-fix"> BDT 7500</span></h5></li>
+                                <li><h5>{{ $property->bed_type }}: <span class="prt-price-fix"> BDT {{ $property->rent_amount }}</span></h5></li>
+                                {{-- <li><h5>Double Bed Room: <span class="prt-price-fix"> BDT 7500</span></h5></li>
                                 <li><h5>Tripple Bed Room: <span class="prt-price-fix"> BDT 5500</span></h5></li>
-                                <li><h5>Quarter Bed Room: <span class="prt-price-fix"> BDT 4000</span></h5></li>
+                                <li><h5>Quarter Bed Room: <span class="prt-price-fix"> BDT 4000</span></h5></li> --}}
                             </ul>
                         </div>
                         <div class="block-body">
                             <div class="map-container">
-                                <img src="{{ asset('frontend_assets') }}/img/meal.png" alt="" class="img-fluid ">
+                                {{-- <img src="{{ asset('frontend_assets') }}/img/meal.png" alt="" class="img-fluid "> --}}
                             </div>
                         </div>
                     </div>
@@ -76,10 +80,15 @@
                     <div id="clOne" class="panel-collapse collapse show" aria-labelledby="clOne">
                         <div class="block-body">
                             <ul class="deatil_features">
-                                <li><strong>Bed Type:</strong>Double Beds</li>
-                                <li><strong>Bathrooms:</strong>1 Bath</li>
-                                <li><strong>Hostel Type:</strong>Boys</li>
-                                <li><strong>Kitchen Features:</strong>Kitchen Facilities</li>
+                                <li><strong>Bed Type:</strong>{{ $property->bed_type }}</li>
+                                <li><strong>Bathrooms:</strong>{{ $property->bathroom }}</li>
+                                <li><strong>Hostel Type:</strong>
+                                    @if ($property->type == 1)
+                                        For Boys
+                                    @else
+                                        For Girls
+                                    @endif
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -94,8 +103,9 @@
                     </div>
                     <div id="clTwo" class="panel-collapse collapse show">
                         <div class="block-body">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <p>
+                                {{ $property->description }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -110,15 +120,12 @@
                     <div id="clThree" class="panel-collapse collapse show">
                         <div class="block-body">
                             <ul class="avl-features third color">
-                                <li>Air Conditioning</li>
-                                <li>Laundry Room</li>
-                                <li>Gym</li>
-                                <li>Alarm</li>
-                                <li>Window Covering</li>
-                                <li>Internet</li>
-                                <li>Pets Allow</li>
-                                <li>Free WiFi</li>
-                                <li>Car Parking</li>
+                                @php
+                                    $feas = explode('#', $property->features);
+                                @endphp
+                                @foreach (array_filter($feas) as $fea)
+                                    <li>{{ $fea }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -355,10 +362,10 @@
                     <!-- Agent Detail -->
                     <div class="sides-widget">
                         <div class="sides-widget-header">
-                            <div class="agent-photo"><img src="{{ asset('frontend_assets') }}/img/user-6.jpg" alt=""></div>
+                            <div class="agent-photo"><img src="{{ asset('uploads/avatars') }}/{{ App\User::find($property->user_id)->avatar }}" alt=""></div>
                             <div class="sides-widget-details">
-                                <h4><a href="#">Mr. Hostel Manager</a></h4>
-                                <span><i class="lni-phone-handset"></i>+880 1853569875</span>
+                                <h4><a href="#">{{ $property->c_name }}</a></h4>
+                                <span><i class="lni-phone-handset"></i>{{ $property->c_phone_number }}</span>
                             </div>
                             <div class="clearfix"></div>
                         </div>

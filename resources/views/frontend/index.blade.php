@@ -166,15 +166,15 @@
         </div>
 
         <div class="row">
-            @for ($i = 1; $i < 10; $i++)
-                <!-- Single Property -->
+            @foreach ($properties as $property)
+            <!-- Single Property -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="property-listing property-2">
 
                         <div class="listing-img-wrapper">
                             <div class="list-img-slide">
                                 <div class="click">
-                                    <div><a href="#"><img src="{{ asset('frontend_assets') }}/img/p-1.jpg" class="img-fluid mx-auto" alt="" /></a></div>
+                                    <div><a href="#"><img src="{{ asset('uploads/property_photos') }}/{{ $property->property_photo }}" class="img-fluid mx-auto" alt="" /></a></div>
                                 </div>
                             </div>
                         </div>
@@ -182,11 +182,17 @@
                         <div class="listing-detail-wrapper">
                             <div class="listing-short-detail-wrap">
                                 <div class="listing-short-detail">
-                                    <span class="property-type">For Rent</span>
-                                    <h4 class="listing-name verified"><a href="#" class="prt-link-detail">Dhanmondi Hostel</a></h4>
+                                    <span class="property-type">
+                                        @if ($property->type == 1)
+                                            For Boys
+                                        @else
+                                            For Girls
+                                        @endif
+                                    </span>
+                                    <h4 class="listing-name verified"><a href="#" class="prt-link-detail">{{ $property->title }}</a></h4>
                                 </div>
                                 <div class="listing-short-detail-flex">
-                                    <h6 class="listing-card-info-price">15,000</h6>
+                                    <h6 class="listing-card-info-price">৳{{ $property->rent_amount }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -194,30 +200,30 @@
                         <div class="price-features-wrapper">
                             <div class="list-fx-features">
                                 <div class="listing-card-info-icon">
-                                    <div class="inc-fleat-icon"><img src="{{ asset('frontend_assets') }}/img/bed.svg" width="13" alt="" /></div>2 Beds
+                                    <div class="inc-fleat-icon"><img src="{{ asset('frontend_assets') }}/img/bed.svg" width="13" alt="" /></div>{{ $property->bed_type }}
                                 </div>
                                 <div class="listing-card-info-icon">
-                                    <div class="inc-fleat-icon"><img src="{{ asset('frontend_assets') }}/img/bathtub.svg" width="13" alt="" /></div>1 Bath
+                                    <div class="inc-fleat-icon"><img src="{{ asset('frontend_assets') }}/img/bathtub.svg" width="13" alt="" /></div>{{ $property->bathroom }} Bath
                                 </div>
-                                <div class="listing-card-info-icon">
+                                {{-- <div class="listing-card-info-icon">
                                     <div class="inc-fleat-icon"><img src="{{ asset('frontend_assets') }}/img/move.svg" width="13" alt="" /></div>650 sqft
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
                         <div class="listing-detail-footer">
                             <div class="footer-first">
-                                <div class="foot-location"><img src="{{ asset('frontend_assets') }}/img/pin.svg" width="18" alt="" />10/A Dhanmondi, Dhaka</div>
+                                <div class="foot-location"><img src="{{ asset('frontend_assets') }}/img/pin.svg" width="18" alt="" />{{ $property->address }}</div>
                             </div>
                             <div class="footer-flex">
-                                <a href="{{ route('property.details', $i) }}" class="prt-view">View</a>
+                                <a href="{{ route('property.details', $property->id) }}" class="prt-view">View</a>
                             </div>
                         </div>
 
                     </div>
                 </div>
                 <!-- End Single Property -->
-            @endfor
+            @endforeach
         </div>
 
         <div class="row">
@@ -244,24 +250,24 @@
         </div>
 
         <div class="row">
-            @for ($i = 1; $i <= 6; $i++)
-            <div class="col-lg-4 col-md-4">
-                <div class="location-property-wrap">
-                    <div class="location-property-thumb">
-                        <a href="#"><img src="{{ asset('frontend_assets') }}/img/c-1.png" class="img-fluid" alt="" /></a>
-                    </div>
-                    <div class="location-property-content">
-                        <div class="lp-content-flex">
-                            <h4 class="lp-content-title">Dhanmondi, Dhaka</h4>
-                            <span>32 Property For Rent</span>
+            @foreach ($locations as $location)
+                <div class="col-lg-4 col-md-4">
+                    <div class="location-property-wrap">
+                        <div class="location-property-thumb">
+                            <a href="#"><img src="{{ asset('frontend_assets') }}/img/c-1.png" class="img-fluid" alt="" /></a>
                         </div>
-                        <div class="lp-content-right">
-                            <a href="#" class="lp-property-view"><i class="ti-angle-right"></i></a>
+                        <div class="location-property-content">
+                            <div class="lp-content-flex">
+                                <h4 class="lp-content-title">{{ $location->name }}, {{ App\District::find($location->district_id)->name }}</h4>
+                                <span>01 Property For Rent</span>
+                            </div>
+                            <div class="lp-content-right">
+                                <a href="#" class="lp-property-view"><i class="ti-angle-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endfor
+            @endforeach
         </div>
 
         <div class="row">

@@ -151,6 +151,11 @@
 					<div class="container">
 						<div class="row align-items-center">
 							<div class="col-lg-12 col-md-12">
+                                @if ($errors->any())
+                                    @php
+                                        alert()->error('Error!',$errors->all())->autoClose(false);
+                                    @endphp
+                                @endif
 								<p class="mb-0 text-center">© {{ now()->year }} {{ env('APP_NAME') }} All Rights Reserved</p>
 							</div>
 						</div>
@@ -314,10 +319,11 @@
 		<script src="{{ asset('frontend_assets') }}/js/imagesloaded.js"></script>
 
 		<script src="{{ asset('frontend_assets') }}/js/custom.js"></script>
+
+        @include('sweetalert::alert')
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->
-
 	</body>
 </html>
 
