@@ -16,8 +16,7 @@ Auth::routes();
 //Custom Routes//
 // FrontendController Routes
 Route::get('/', 'FrontendController@index')->name('index');
-Route::get('add/property', 'FrontendController@addproperty')->name('add.property');
-Route::post('add/property', 'FrontendController@addpropertypost')->name('add.property.post');
+Route::get('about', 'FrontendController@about')->name('about');
 Route::get('property/details/{id}', 'FrontendController@propertydetails')->name('property.details');
 
 // DashboardController Routes
@@ -30,6 +29,10 @@ Route::resource('role', 'RoleController');
 Route::resource('user', 'UserController');
 
 Route::middleware(['auth'])->group(function () {
+    // PropertyController Routes
+    Route::get('add/property', 'PropertyController@addproperty')->name('add.property');
+    Route::post('add/property', 'PropertyController@addpropertypost')->name('add.property.post');
+
     // ProfileController Routes
     Route::resource('profile', 'ProfileController');
     Route::post('password/update', 'ProfileController@passwordupdate')->name('profile.password.update');

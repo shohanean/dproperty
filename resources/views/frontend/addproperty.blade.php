@@ -78,6 +78,21 @@
                         <!-- Submit Form -->
                         <div class="col-lg-12 col-md-12">
 
+                            @if (session('success'))
+                                <div class="alert alert-success text-dark" role="alert">
+                                    <h4 class="alert-heading">
+                                        {{ session('success') }}
+                                    </h4>
+                                    <hr>
+                                    <p class="mb-0">
+                                        Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
+                                    </p>
+                                </div>
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
                             <div class="submit-page">
                                 <form action="{{ route('add.property.post') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -103,12 +118,12 @@
 
                                                 <div class="form-group col-md-6">
                                                     <label>Rent Amount</label>
-                                                    <input type="text" class="form-control" placeholder="BDT" name="rent_amount">
+                                                    <input type="number" class="form-control" placeholder="BDT" name="rent_amount">
                                                 </div>
 
                                                 <div class="form-group col-md-6">
                                                     <label>Meal Cost</label>
-                                                    <input type="text" class="form-control" placeholder="BDT" name="meal_cost">
+                                                    <input type="number" class="form-control" placeholder="BDT" name="meal_cost">
                                                 </div>
 
                                                 <div class="form-group col-md-6">

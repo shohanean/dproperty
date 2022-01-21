@@ -36,7 +36,7 @@
 							<ul class="nav-menu">
 								<li><a href="{{ route('index') }}">Home<span class="submenu-indicator"></span></a>
 								</li>
-								<li><a href="">About<span class="submenu-indicator"></span></a>
+								<li><a href="{{ route('about') }}">About<span class="submenu-indicator"></span></a>
 								</li>
 								</li>
 								<li class="nav-item dropdown">
