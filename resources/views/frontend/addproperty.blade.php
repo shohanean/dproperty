@@ -81,15 +81,15 @@
                             @if (session('success'))
                                 <div class="alert alert-success text-dark" role="alert">
                                     <h4 class="alert-heading">
-                                        {{ session('success') }}
+                                        Property Added Successfully!
                                     </h4>
                                     <hr>
                                     <p class="mb-0">
-                                        Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
+                                        You can see the newly created property by clicking
+                                        <a href="{{ session('success') }}" target="_blank">
+                                            <b>here</b>
+                                        </a>
                                     </p>
-                                </div>
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
                                 </div>
                             @endif
 

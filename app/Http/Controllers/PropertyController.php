@@ -36,6 +36,6 @@ class PropertyController extends Controller
                 'property_photo' => $new_file_name
             ]);
         }
-        return back()->with('success', 'Property Added Successfully!');
+        return back()->with('success', route('property.details', $id));
     }
 }

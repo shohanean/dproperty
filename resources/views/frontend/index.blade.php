@@ -160,13 +160,13 @@
             <div class="col-lg-7 col-md-10 text-center">
                 <div class="sec-heading center">
                     <h2>Explore Good places</h2>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
+                    <p>There are total <b>{{ $properties->count() }}</b> properties that you might like</p>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            @foreach ($properties as $property)
+            @forelse ($properties->take(6) as $property)
             <!-- Single Property -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="property-listing property-2">
@@ -223,14 +223,20 @@
                     </div>
                 </div>
                 <!-- End Single Property -->
-            @endforeach
+            @empty
+            <div class="alert alert-danger">
+                No Property Added Yet!
+            </div>
+            @endforelse
         </div>
 
+        @if ($properties->count() > 6)
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                 <a href="listings-list-with-sidebar.html" class="btn btn-theme-light-2 rounded">Browse More Property</a>
             </div>
         </div>
+        @endif
 
     </div>
 </section>
