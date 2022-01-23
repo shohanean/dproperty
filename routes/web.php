@@ -17,6 +17,7 @@ Auth::routes();
 // FrontendController Routes
 Route::get('/', 'FrontendController@index')->name('index');
 Route::get('about', 'FrontendController@about')->name('about');
+Route::get('contact-us', 'FrontendController@contact_us')->name('contact.us');
 Route::get('property/details/{id}', 'FrontendController@propertydetails')->name('property.details');
 
 // DashboardController Routes

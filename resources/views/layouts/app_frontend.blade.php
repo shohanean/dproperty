@@ -48,7 +48,7 @@
 									<li><a class="dropdown-item" href="#">Girls accommodation</a></li>
 								  </ul>
 								</li>
-								<li><a href="#">Contact us<span class="submenu-indicator"></span></a>
+								<li><a href="{{ route('contact.us') }}">Contact us<span class="submenu-indicator"></span></a>
 								</li>
 							</ul>
 

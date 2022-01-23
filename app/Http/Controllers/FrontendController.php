@@ -21,6 +21,10 @@ class FrontendController extends Controller
     {
         return view('frontend.about');
     }
+    public function contact_us()
+    {
+        return view('frontend.contact');
+    }
     public function propertydetails($id)
     {
         $property = Property::find($id);
