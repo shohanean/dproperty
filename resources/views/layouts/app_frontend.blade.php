@@ -28,7 +28,7 @@
 					<nav id="navigation" class="navigation navigation-landscape">
 						<div class="nav-header">
 							<a class="nav-brand" href="{{ route('index') }}">
-								<img src="{{ asset('frontend_assets') }}/img/logo.png" class="logo" alt="" />
+								<img src="https://seeklogo.com/images/P/property-building-logo-5969072356-seeklogo.com.png" class="logo" alt="" />
 							</a>
 							<div class="nav-toggle"></div>
 						</div>
@@ -87,7 +87,7 @@
 
 							<div class="col-lg-3 col-md-4">
 								<div class="footer-widget">
-									<img src="{{ asset('frontend_assets') }}/img/logo.png" class="img-footer" alt="" />
+									<img src="https://seeklogo.com/images/P/property-building-logo-5969072356-seeklogo.com.png" class="img-footer" alt="" />
 									<div class="footer-add">
 										<p>Dhanmondi 10/A, Dhaka, Bangladesh</p>
 										<p>+880 199449963</p>
